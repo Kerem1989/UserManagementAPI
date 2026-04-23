@@ -1,0 +1,28 @@
+
+GET https://localhost:7136/users/7
+
+###
+
+POST https://localhost:7136/users
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+###
+
+PUT https://localhost:7136/users/7
+Content-Type: application/json
+
+{
+  "name": "Jane Doe"
+}
+
+###
+
+DELETE https://localhost:7136/users/7
+
+###
+
+GET https://localhost:7136/users
