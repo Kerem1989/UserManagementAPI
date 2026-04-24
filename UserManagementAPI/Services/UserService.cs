@@ -7,13 +7,12 @@ namespace UserManagementAPI.Services ;
 
         public User GetUser(int id, Dictionary<int, User> users)
         {
-            users.TryGetValue(id, out User user);
-            return user;
+            return users.TryGetValue(id, out User user) ? user : null;
         }
 
         public User CreateUser(User user, Dictionary<int, User> users)
         {
-            int id = users.Keys.Max() + 1;
+            int id = users.Keys.Count == 0 ? 1 : users.Keys.Max() + 1;
             user.Id = id;
             users.Add(id, user);
             return user;
@@ -21,13 +20,13 @@ namespace UserManagementAPI.Services ;
         
         public User UpdateUser(int id, User user, Dictionary<int, User> users)
         {
-            if (users.ContainsKey(id))
+            if (users.TryGetValue(id, out User existingUser))
             {
-                user.Id = id;
-                users[id] = user;
-                return user;
+                existingUser.Name = user.Name;
+                return existingUser;
             }
             return null;
+  
         }
 
         public void DeleteUser(int id, Dictionary<int, User> users)

@@ -1,19 +1,24 @@
 
-GET https://localhost:7136/users/7
+GET https://localhost:7136/users/77
+X-API-KEY: Juventus
 
 ###
 
 POST https://localhost:7136/users
 Content-Type: application/json
+X-API-KEY: Juventus
+
 
 {
-  "name": "John Doe"
+  "name": ""
 }
 
 ###
 
-PUT https://localhost:7136/users/7
+PUT https://localhost:7136/users/1
 Content-Type: application/json
+X-API-KEY: Juventus
+
 
 {
   "name": "Jane Doe"
@@ -22,7 +27,9 @@ Content-Type: application/json
 ###
 
 DELETE https://localhost:7136/users/7
+X-API-KEY: Juventus
 
 ###
 
 GET https://localhost:7136/users
+X-API-KEY: Juventus

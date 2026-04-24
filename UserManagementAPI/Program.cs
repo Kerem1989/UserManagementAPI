@@ -1,4 +1,6 @@
+using FluentValidation;
 using UserManagementAPI.Endpoints;
+using UserManagementAPI.Middleware;
 using UserManagementAPI.Models;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,7 @@ Dictionary<int, User> users = new Dictionary<int, User>
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
     builder.Services.AddControllers();
+    builder.Services.AddValidatorsFromAssemblyContaining<Program>();
     var app = builder.Build();
 // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
@@ -24,6 +27,8 @@ Dictionary<int, User> users = new Dictionary<int, User>
         app.UseSwaggerUI();
     }
     app.MapControllers();
+    app.UseMiddleware<ApiKeyMiddleware>();
+
     app.UseHttpsRedirection();
 // Map endpoints from Endpoints.cs
     app.MapEndpoints(users);
