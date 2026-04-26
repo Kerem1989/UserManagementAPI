@@ -1,5 +1,10 @@
 
-GET https://localhost:7136/users/77
+GET https://localhost:7136/users/0
+X-API-KEY: Juventus
+
+###
+
+GET https://localhost:7136/error-testcan 
 X-API-KEY: Juventus
 
 ###
@@ -15,7 +20,7 @@ X-API-KEY: Juventus
 
 ###
 
-PUT https://localhost:7136/users/1
+PUT https://localhost:7136/users
 Content-Type: application/json
 X-API-KEY: Juventus
 

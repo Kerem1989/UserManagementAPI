@@ -10,6 +10,11 @@ namespace UserManagementAPI.Endpoints ;
         {
             var userService = new UserService();
             
+            app.MapGet("/error-test", () =>
+            {
+                throw new InvalidOperationException("Test exception for middleware");
+            });
+            
             app.MapGet("/users/{id}", (int id) =>
             {
                 var user = userService.GetUser(id, users);
